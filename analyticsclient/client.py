@@ -140,7 +140,7 @@ class RestClient(Client):
             headers['Authorization'] = 'Token ' + self.auth_token
 
         try:
-            response = requests.get('{0}/{1}'.format(self.base_url, resource), headers=headers, timeout=timeout)
+            response = requests.get(u'{0}/{1}'.format(self.base_url, resource), headers=headers, timeout=timeout)
 
             if response.status_code != requests.codes.ok:  # pylint: disable=no-member
                 message = 'Resource "{0}" returned status code {1}'.format(resource, response.status_code)
@@ -152,7 +152,7 @@ class RestClient(Client):
         except requests.exceptions.RequestException:
             message = 'Unable to retrieve resource'
             log.exception(message)
-            raise ClientError('{0} "{1}"'.format(message, resource))
+            raise ClientError(u'{0} "{1}"'.format(message, resource))
 
 
 # TODO: Provide more detailed errors as necessary.

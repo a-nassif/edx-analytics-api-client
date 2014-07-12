@@ -25,11 +25,11 @@ class Course(object):
     def recent_active_user_count(self):
         """A count of users who have recently interacted with the course in any way."""
         # TODO: should we return something more structured than a python dict?
-        return self.client.get('courses/{0}/recent_activity'.format(unicode(self.course_key)))
+        return self.client.get(u'courses/{0}/recent_activity'.format(unicode(self.course_key)))
 
     @property
     def recent_problem_activity_count(self):
         """A count of users who have recently attempted a problem."""
         # TODO: Can we avoid passing around strings like "ATTEMPTED_PROBLEM" in the data pipeline and the client?
         return self.client.get(
-            'courses/{0}/recent_activity?label=ATTEMPTED_PROBLEM'.format(unicode(self.course_key)))
+            u'courses/{0}/recent_activity?label=ATTEMPTED_PROBLEM'.format(unicode(self.course_key)))
